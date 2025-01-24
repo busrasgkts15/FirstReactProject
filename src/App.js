@@ -1,7 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
-import logo from './logo.svg';
+
 import { Button, Col, Row, Table } from 'reactstrap';
 import { Input } from 'reactstrap';
 
@@ -49,21 +49,23 @@ function CustomerFeatureRow({ customer }) {
   )
 }
 
-function CustomerTable({ customer }) {
+function CustomerTable({ customer , filterText}) {
   const Titlerows = [];
   const Featurerows = [];
 
   Titlerows.push(
-    
-        <CustomerTitleRow />
+
+    <CustomerTitleRow />
   );
 
   customer.forEach((a) => {
+    if(a.fullname.indexOf(filterText) !== -1){
     Featurerows.push(
       <CustomerFeatureRow
       customer={a}
       />
-    )
+    );
+    }
   });
 
   return (
@@ -81,16 +83,15 @@ function CustomerTable({ customer }) {
   );
 }
 
-function SearchAndAddCustomer(){
+function SearchAndAddCustomer({filterText , setFilterText}){
   return (
     <div style={{padding: 20 , marginLeft: 100}}>
       <Row>
         <Col style={{}} md={4} >
-        <Input placeholder='Searc..'/>
+        <Input placeholder='Searc..' value={filterText} 
+        onChange={e => setFilterText(e.target.value)}/>
         </Col>
-        <Col md={8
-
-        } >
+        <Col md={8} >
         <Button color="primary">Add Customer</Button>
         </Col>
       </Row> 
@@ -101,10 +102,12 @@ function SearchAndAddCustomer(){
 
 
 function FilterCustomerTable({ customers }){
+  const [filterText, setFilterText] = useState('');
+
   return (
     <div>
-    <SearchAndAddCustomer/>
-    <CustomerTable customer={customers}/>
+    <SearchAndAddCustomer filterText={filterText} setFilterText={setFilterText}/>
+    <CustomerTable customer={customers} filterText={filterText} setFilterText={setFilterText}/>
     </div>
   )
 }
