@@ -1,9 +1,12 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
+import './App.css';
 
 import { Button, Col, Row, Table } from 'reactstrap';
 import { Input } from 'reactstrap';
+import Deneme2 from './components/Deneme2';
+
 
 function CustomerTitleRow() {
     return (
@@ -26,14 +29,13 @@ function CustomerTitleRow() {
 
 // verileri çekeceğim
 function CustomerFeatureRow({ customer }) {
-  const balances = document.getElementsByClassName('balance');
-  for (let balance of balances) {
-    const text = balance.textContent.trim();
-    if (text.startsWith('-$')) {
-      balance.style.color = 'red';
-    } else if (text.startsWith('$')) {
-      balance.style.color = 'green';
-    }
+  const checkColor = (blnc)=> {
+    console.log(blnc)
+   if(blnc.includes("-") ) {
+  return 'red';
+   } else {
+    return 'green'
+   }
   }
 
   return (
@@ -49,7 +51,8 @@ function CustomerFeatureRow({ customer }) {
       <th>{customer.description}</th>
       <th>{customer.status}</th>
       <th>{customer.rate}</th>
-      <th className='balance'>{customer.balance}</th>
+      {/* <th style={{color: checkColor(customer.balance)}}>{customer.balance}</th> */}
+      <th style={{color: customer.balance.includes("-") ? 'red' : 'green'}}>{customer.balance}</th>
     </tr>
     </>
   )
@@ -58,17 +61,6 @@ function CustomerFeatureRow({ customer }) {
 function CustomerTable({ customer , filterText}) {
   const Titlerows = [];
   const Featurerows = [];
-
-  const tableStyle = {
-    width: "100%",
-    margin: "20px auto",
-    border: "1px solid #aaaaaa", // Çerçeve
-    borderRadius: "8px", // Köşeleri yuvarlatma
-    boxShadow: "0 4px 8px #aaaaaa", // Gölge
-    backgroundColor: "#aaaaaa", // Arka plan rengi
-    overflow: "hidden", // Taşmaları gizle
-  };
-
 
   Titlerows.push(
 
@@ -90,7 +82,7 @@ function CustomerTable({ customer , filterText}) {
     <Row>
       <Col md={2}></Col>
       <Col md={8}>
-      <Table style={tableStyle} striped>
+      <Table className='table' striped>
      <thead style={{fontFamily:'fantasy'}}>
       {Titlerows}
     </thead>
@@ -108,14 +100,16 @@ function CustomerTable({ customer , filterText}) {
 function SearchAndAddCustomer({filterText , setFilterText}){
   return (
     <div style={{padding: 20 , marginLeft: 100}}>
-      <Row>
-        <Col md={2}></Col>
-        <Col style={{}} md={4} >
-        <Input placeholder='Searc..' value={filterText} 
+      <Deneme2 baslik={filterText}></Deneme2>
+      {/* <Row style={{display: 'flex' , justifyContent: 'center'}}> */}
+      <Row className='d-flex justify-content-center'> {/* bootstrap yazım şekli */}
+        
+        <Col style={{}} md={4} sm={6} xs={12}>
+        <Input placeholder='🔎 Search..' value={filterText} 
         onChange={e => setFilterText(e.target.value)}/>
         </Col>
-        <Col md={4} >
-        <Button color="primary">Add Customers</Button>
+        <Col md={2} sm={6} xs={12}>
+        <Button className='xsbutton' color="primary">Add Customers</Button>
         </Col>
       </Row> 
     </div>
@@ -126,11 +120,37 @@ function SearchAndAddCustomer({filterText , setFilterText}){
 
 function FilterCustomerTable({ customers }){
   const [filterText, setFilterText] = useState('');
+  console.log(customers);
+
+  const array = []
+
+  const deneme = [
+    {count: 1, color: "red"},
+    {count: 2, color: "gray"},
+    {count: 3, color: "blue"},
+  ]
+
+  const x = deneme.map((item) => {
+    return array.push(item.color)
+
+  })
+
+  console.log("yeni array" , x)
 
   return (
     <div>
     <SearchAndAddCustomer filterText={filterText} setFilterText={setFilterText}/>
     <CustomerTable customer={customers} filterText={filterText} setFilterText={setFilterText}/>
+    <Row>
+
+      {customers.map((item) => {
+        return <Col className='d-flex justify-content-center' lg={2} md={2} sm={2} xs={2}>
+        <span>
+          {item.fullname}
+        </span>
+        </Col>
+      })}
+    </Row>
     </div>
   )
 }
