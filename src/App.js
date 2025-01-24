@@ -9,6 +9,10 @@ function CustomerTitleRow() {
     return (
       <>
       <tr>
+      <th><Input style={{borderRadius: 8}}
+        type="checkbox"
+        disabled
+      /></th>
         <th>#</th>
         <th>Name</th>
         <th>Description</th>
@@ -22,20 +26,22 @@ function CustomerTitleRow() {
 
 // verileri çekeceğim
 function CustomerFeatureRow({ customer }) {
-
-  const balances = document.querySelectorAll('th');
-  balances.forEach((balance) => {
-    const value = balance.textContent.trim();
-    if (value.startsWith('-$')) {
+  const balances = document.getElementsByClassName('balance');
+  for (let balance of balances) {
+    const text = balance.textContent.trim();
+    if (text.startsWith('-$')) {
       balance.style.color = 'red';
-    } else if (value.startsWith('$')) {
+    } else if (text.startsWith('$')) {
       balance.style.color = 'green';
     }
-  });
+  }
 
   return (
     <>
     <tr>
+      <th><Input style={{borderRadius: 8}}
+        type="checkbox"
+      /></th>
       <th>{customer.id}</th>
       <th>{customer.fullname}
         <h6 style={{color: 'gray'}}>{customer.phonenumber}</h6>
@@ -43,7 +49,7 @@ function CustomerFeatureRow({ customer }) {
       <th>{customer.description}</th>
       <th>{customer.status}</th>
       <th>{customer.rate}</th>
-      <th style={{color: 'green'}}>{customer.balance}</th>
+      <th className='balance'>{customer.balance}</th>
     </tr>
     </>
   )
@@ -52,6 +58,17 @@ function CustomerFeatureRow({ customer }) {
 function CustomerTable({ customer , filterText}) {
   const Titlerows = [];
   const Featurerows = [];
+
+  const tableStyle = {
+    width: "100%",
+    margin: "20px auto",
+    border: "1px solid #aaaaaa", // Çerçeve
+    borderRadius: "8px", // Köşeleri yuvarlatma
+    boxShadow: "0 4px 8px #aaaaaa", // Gölge
+    backgroundColor: "#aaaaaa", // Arka plan rengi
+    overflow: "hidden", // Taşmaları gizle
+  };
+
 
   Titlerows.push(
 
@@ -70,14 +87,19 @@ function CustomerTable({ customer , filterText}) {
 
   return (
     <>
-    <div >
-    <Table striped>
+    <Row>
+      <Col md={2}></Col>
+      <Col md={8}>
+      <Table style={tableStyle} striped>
      <thead style={{fontFamily:'fantasy'}}>
       {Titlerows}
     </thead>
     <tbody style={{fontFamily:'sans-serif', justifyContent:'center' , alignItems: 'center' }}>{Featurerows}</tbody>
     </Table>
-    </div>
+      </Col>
+    </Row>
+    
+    
     </>
 
   );
@@ -87,11 +109,12 @@ function SearchAndAddCustomer({filterText , setFilterText}){
   return (
     <div style={{padding: 20 , marginLeft: 100}}>
       <Row>
+        <Col md={2}></Col>
         <Col style={{}} md={4} >
         <Input placeholder='Searc..' value={filterText} 
         onChange={e => setFilterText(e.target.value)}/>
         </Col>
-        <Col md={8} >
+        <Col md={4} >
         <Button color="primary">Add Customers</Button>
         </Col>
       </Row> 
