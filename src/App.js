@@ -111,7 +111,7 @@ function SearchAndAddCustomer({filterText , setFilterText}){
       <Row>
         <Col md={2}></Col>
         <Col style={{}} md={4} >
-        <Input placeholder='Searc..' value={filterText} 
+        <Input placeholder='🔎 Search..' value={filterText} 
         onChange={e => setFilterText(e.target.value)}/>
         </Col>
         <Col md={4} >
