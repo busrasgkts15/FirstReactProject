@@ -92,7 +92,7 @@ function SearchAndAddCustomer({filterText , setFilterText}){
         onChange={e => setFilterText(e.target.value)}/>
         </Col>
         <Col md={8} >
-        <Button color="primary">Add Customer</Button>
+        <Button color="primary">Add Customers</Button>
         </Col>
       </Row> 
     </div>
