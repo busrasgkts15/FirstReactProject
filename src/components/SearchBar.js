@@ -7,9 +7,7 @@ function SearchBar({ filterText, setFilterText }) {
     <div style={{ padding: 20, marginLeft: 100 }}>
       {/* <Row style={{display: 'flex' , justifyContent: 'center'}}> */}
       <Row className="d-flex justify-content-center">
-        {" "}
-        {/* bootstrap yazım şekli */}
-        <Col style={{}} md={4} sm={6} xs={12}>
+        <Col md={4} sm={6} xs={12}>
           <Input
             placeholder="🔎 Search.."
             value={filterText}

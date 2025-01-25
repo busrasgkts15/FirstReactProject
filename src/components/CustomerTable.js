@@ -2,7 +2,6 @@ import React from "react";
 import { Input } from "reactstrap";
 import { Col, Row, Table } from "reactstrap";
 
-
 function CustomerTitleRow() {
   return (
     <>
@@ -60,11 +59,17 @@ function CustomerTable({ customer, filterText }) {
 
   Titlerows.push(<CustomerTitleRow />);
 
-  customer.forEach((a) => {
-    if (a.fullname.indexOf(filterText) !== -1) {
-      Featurerows.push(<CustomerFeatureRow customer={a} />);
+  customer.map((item) => {
+    if (item.fullname.indexOf(filterText) !== -1) {
+      Featurerows.push(<CustomerFeatureRow customer={item} />);
     }
   });
+
+  // customer.forEach((a) => {
+  //   if (a.fullname.indexOf(filterText) !== -1) {
+  //     Featurerows.push(<CustomerFeatureRow customer={a} />);
+  //   }
+  // });
 
   return (
     <>
@@ -89,4 +94,4 @@ function CustomerTable({ customer, filterText }) {
   );
 }
 
-export default CustomerTable
+export default CustomerTable;
