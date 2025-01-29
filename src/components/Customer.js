@@ -21,8 +21,8 @@ function Customer({ customer }) {
           {customer.name}
           <h6 style={{ color: "gray" }}>{customer.phone}</h6>
         </th>
-        <th>{customer.website}</th>
-        <th>{customer.username}</th>
+        <th>{customer.Website}</th>
+        <th>{customer.success}</th>
         {/* <th>{customer.rate}</th>
         <th>
           {customer.balance}
