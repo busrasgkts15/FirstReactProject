@@ -1,5 +1,5 @@
 import React from "react";
-import { Input } from "reactstrap";
+import { Button, Input } from "reactstrap";
 import { Col, Row, Table } from "reactstrap";
 import Customer from "./Customer";
 import Title from "./Title";

@@ -1,0 +1,13 @@
+{
+  "users": [
+    {"id" : 1 , "name" : "Leanne Graham" , "Website" : "hildegard.org" , "phone" : 1803156442 , "success" : "⭐️"},
+    {"id" : 2 , "name" : "Ervin Howell" , "Website" : "anastasia.net" , "phone" : 37333245424, "success" : "⭐️⭐️"},
+    {"id" : 3 , "name" : "Patricia Lebsack" , "Website" : "kae.org" , "phone" : 857295724, "success" : "⭐️⭐️⭐️⭐️"},
+    {"id" : 4 , "name" : "Adreb Gleyds" , "Website" : "demarco.biz" , "phone" : 1803156442 , "success" : "⭐️⭐️"},
+    {"id" : 5 , "name" : "Kurtis Weissnat" , "Website" : "karrinne.info" , "phone" : 2425723643 , "success" : "⭐️⭐️⭐️"},
+    {"id" : 6 , "name" : "Nicholas Runolfsdottir V" , "Website" : "elvis.org" , "phone" : 2646344354 , "success" : "⭐️"},
+    {"id" : 7 , "name" : "Cleamint Glenna" , "Website" : "jacthan.info" , "phone" : 8698453475 , "success" : "⭐️⭐️⭐️"},
+    {"id" : 8 , "name" : "Dennis Hewtfid" , "Website" : "conrad.org" , "phone" : 4757326735 , "success" : "⭐️⭐️"},
+    {"id" : 9 , "name" : "Chelse Graham" , "Website" : "ola.org" , "phone" : 3644695343 , "success" : "⭐️⭐️"}
+]
+}

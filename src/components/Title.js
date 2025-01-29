@@ -9,10 +9,9 @@ function Title() {
         </th>
         <th>#</th>
         <th>Name</th>
-        <th>Description</th>
-        <th>Status</th>
-        <th>Rate</th>
-        <th>Balance</th>
+        <th>Website</th>
+        <th>Success</th>
+        <th>Details</th>
       </tr>
     </>
   );
