@@ -2,11 +2,31 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import FilterCustomerTable from "./components/FilterCustomerTable";
+import { useEffect, useState } from "react";
+import axios from "axios";
+
+const BASE_URL = "";
 
 export default function App() {
-  return <FilterCustomerTable customers={CUSTOMERS} />;
-}
+  const [user, setUser] = useState([]);
 
+  useEffect(() => {
+    const users = async () => {
+      try {
+        const response = await axios.get(
+          "https://jsonplaceholder.typicode.com/users"
+        );
+        setUser(response.data);
+      } catch (error) {
+        console.error("Hay aksi! Bir meteor yağmuruna yakalandık:", error);
+      }
+    };
+
+    users();
+  }, []);
+
+  return <FilterCustomerTable customers={user} />;
+}
 
 const CUSTOMERS = [
   {
@@ -15,7 +35,7 @@ const CUSTOMERS = [
     phonenumber: "+1250123",
     description: "Reliable customer.",
     status: "active",
-    rate: "4.8",
+    rate: 4.8,
     balance: "-$234.56",
   },
   {
@@ -24,7 +44,7 @@ const CUSTOMERS = [
     phonenumber: "+1205504",
     description: "New customer.",
     status: "active",
-    rate: "4.5",
+    rate: 4.5,
     balance: "$150.00",
   },
   {
@@ -33,7 +53,7 @@ const CUSTOMERS = [
     phonenumber: "+1205525",
     description: "Occasionally active.",
     status: "inactive",
-    rate: "4.2",
+    rate: 4.2,
     balance: "$89.40",
   },
   {
@@ -42,7 +62,7 @@ const CUSTOMERS = [
     phonenumber: "+1205526",
     description: "Frequent transactions.",
     status: "active",
-    rate: "4.9",
+    rate: 4.9,
     balance: "-$320.80",
   },
   {
@@ -51,7 +71,7 @@ const CUSTOMERS = [
     phonenumber: "+1200127",
     description: "Loyal customer.",
     status: "active",
-    rate: "5.0",
+    rate: 5.0,
     balance: "-$420.00",
   },
   {
@@ -60,7 +80,7 @@ const CUSTOMERS = [
     phonenumber: "+1205508",
     description: "Irregular usage.",
     status: "inactive",
-    rate: "4.0",
+    rate: 4.0,
     balance: "$50.00",
   },
   {
@@ -69,7 +89,7 @@ const CUSTOMERS = [
     phonenumber: "+1200129",
     description: "High-value client.",
     status: "active",
-    rate: "4.7",
+    rate: 4.7,
     balance: "-$540.50",
   },
   {
@@ -78,7 +98,7 @@ const CUSTOMERS = [
     phonenumber: "+1208130",
     description: "Steady transactions.",
     status: "active",
-    rate: "4.6",
+    rate: 4.6,
     balance: "$210.75",
   },
   {
@@ -87,7 +107,7 @@ const CUSTOMERS = [
     phonenumber: "+1200131",
     description: "Recently joined.",
     status: "active",
-    rate: "4.4",
+    rate: 4.4,
     balance: "$100.00",
   },
   {
@@ -96,7 +116,7 @@ const CUSTOMERS = [
     phonenumber: "+1202132",
     description: "Inactive lately.",
     status: "inactive",
-    rate: "3.8",
+    rate: 3.8,
     balance: "$30.00",
   },
 ];
