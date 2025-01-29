@@ -11,6 +11,7 @@ function Title() {
         <th>Name</th>
         <th>Website</th>
         <th>Success</th>
+        <th>Details</th>
       </tr>
     </>
   );
