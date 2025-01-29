@@ -1,14 +1,13 @@
 import { Button, Input } from "reactstrap";
+import { Link, useNavigate } from "react-router";
 
 function Customer({ customer }) {
-  // const checkColor = (blnc) => {
-  //   console.log(blnc);
-  //   if (blnc.includes("-")) {
-  //     return "red";
-  //   } else {
-  //     return "green";
-  //   }
-  // };
+
+  const navigate = useNavigate()
+
+  const goToDetail = (id) =>{
+    navigate(`/details/${id}`, {state: [customer]?.filter(item => item.id === id)})
+  }
 
   return (
     <>
@@ -31,7 +30,10 @@ function Customer({ customer }) {
           {customer.balance}
         </th> */}
         <th>
-          <Button color="primary" outline size="md">
+          {console.log("okanId",customer)}
+          <Button color="primary" outline size="md"
+          onClick={() => goToDetail(customer?.id)}
+          >
             Detail
           </Button>
         </th>
